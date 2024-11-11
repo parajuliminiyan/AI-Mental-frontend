@@ -21,7 +21,6 @@ export function MoodSelector({ user }: MoodSelectorProps) {
 
         // Fetch mood options
         const fetchMoods = async () => {
-            // Replace with your API call
             const response = await fetch('/api/moods');
             const data = await response.json();
             setMoodOptions(data);
@@ -33,19 +32,23 @@ export function MoodSelector({ user }: MoodSelectorProps) {
     if (!user) return null;
 
     return (
-        <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-bold text-gray-900">{greeting}, {user.name}!</h2>
-            <p className="mt-2 text-gray-600">How are you feeling today?</p>
+        <div className="bg-white dark:bg-dark-bg-secondary rounded-lg shadow dark:shadow-dark-md p-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-text-primary">
+                {greeting}, {user.name}!
+            </h2>
+            <p className="mt-2 text-gray-600 dark:text-dark-text-secondary">
+                How are you feeling today?
+            </p>
 
             <div className="mt-4 grid grid-cols-3 gap-3">
                 {moodOptions.map((mood) => (
                     <button
                         key={mood.value}
                         onClick={() => setCurrentMood(mood.value)}
-                        className={`p-3 rounded-lg text-center transition-colors
-              ${currentMood === mood.value
-                                ? 'bg-primary-500 text-white'
-                                : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}
+                        className={`p-3 rounded-lg text-center transition-colors ${currentMood === mood.value
+                                ? 'bg-primary-500 dark:bg-dark-accent-primary text-white'
+                                : 'bg-gray-100 dark:bg-dark-bg-tertiary hover:bg-gray-200 dark:hover:bg-dark-border-secondary text-gray-700 dark:text-dark-text-primary'
+                            }`}
                     >
                         {mood.label}
                     </button>

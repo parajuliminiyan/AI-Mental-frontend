@@ -5,7 +5,6 @@ import { QuickSettings } from './profile-settings';
 import { SettingsMenu } from './profile-menu';
 import { UserHeader } from './profile-header';
 import { useState } from 'react';
-import { UserCircle } from 'lucide-react';
 
 interface UserProfile {
     name: string;
@@ -36,7 +35,7 @@ export default function Profile() {
     });
 
     return (
-        <div className="min-h-screen bg-gray-50 pb-20">
+        <div className="min-h-screen bg-gray-50 dark:bg-dark-bg-primary pb-20">
             <UserHeader profile={userProfile} />
             <div className="max-w-7xl mx-auto px-4 py-6">
                 <UserStats stats={userStats} />

@@ -77,24 +77,28 @@ export function DailyTips() {
     const progressPercentage = (completedCount / totalTips) * 100;
 
     return (
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-dark-bg-secondary rounded-lg shadow dark:shadow-dark-md p-6">
             {/* Header with Progress */}
             <div className="mb-6">
                 <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900">Daily Tips</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text-primary">
+                        Daily Tips
+                    </h3>
                     <div className="flex items-center gap-2">
-                        <Trophy className={`h-5 w-5 ${completedCount === totalTips ? 'text-yellow-500' : 'text-gray-300'
+                        <Trophy className={`h-5 w-5 ${completedCount === totalTips
+                                ? 'text-yellow-500'
+                                : 'text-gray-300 dark:text-dark-text-secondary'
                             }`} />
-                        <span className="text-sm font-medium text-gray-500">
+                        <span className="text-sm font-medium text-gray-500 dark:text-dark-text-secondary">
                             {completedCount}/{totalTips}
                         </span>
                     </div>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="w-full h-2 bg-gray-100 rounded-full mt-4">
+                <div className="w-full h-2 bg-gray-100 dark:bg-dark-bg-tertiary rounded-full mt-4">
                     <div
-                        className="h-full bg-primary-500 rounded-full transition-all duration-500"
+                        className="h-full bg-primary-500 dark:bg-dark-accent-primary rounded-full transition-all duration-500"
                         style={{ width: `${progressPercentage}%` }}
                     ></div>
                 </div>
@@ -107,9 +111,10 @@ export function DailyTips() {
                         key={category}
                         onClick={() => setActiveFilter(category || 'all')}
                         className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-              ${activeFilter === category
-                                ? 'bg-primary-500 text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            ${activeFilter === category
+                                ? 'bg-primary-500 dark:bg-dark-accent-primary text-white'
+                                : 'bg-gray-100 dark:bg-dark-bg-tertiary text-gray-600 dark:text-dark-text-secondary hover:bg-gray-200 dark:hover:bg-dark-border-secondary'
+                            }`}
                     >
                         {(category || 'all').charAt(0).toUpperCase() + (category || 'all').slice(1)}
                     </button>
@@ -122,26 +127,28 @@ export function DailyTips() {
                     <div
                         key={tip.id}
                         className={`relative rounded-lg border transition-all duration-200 ${tip.completed
-                                ? 'border-primary-200 bg-primary-50'
-                                : 'border-gray-100 bg-white hover:border-gray-200'
+                                ? 'border-primary-200 dark:border-dark-accent-primary/20 bg-primary-50 dark:bg-dark-accent-primary/10'
+                                : 'border-gray-100 dark:border-dark-border-primary bg-white dark:bg-dark-bg-tertiary hover:border-gray-200 dark:hover:border-dark-border-secondary'
                             }`}
                     >
                         <div className="p-4">
                             {/* Category Badge */}
-                            <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs mb-3 ${getCategoryColor(tip.category || '')}`}>
+                            <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs mb-3 ${getCategoryColor(tip.category || '')} dark:opacity-90`}>
                                 {getCategoryIcon(tip.category)}
                                 {tip.category}
                             </div>
 
                             {/* Tip Content */}
-                            <p className={`text-sm ${tip.completed ? 'text-gray-400' : 'text-gray-700'
+                            <p className={`text-sm ${tip.completed
+                                    ? 'text-gray-400 dark:text-dark-text-secondary'
+                                    : 'text-gray-700 dark:text-dark-text-primary'
                                 }`}>
                                 {tip.content}
                             </p>
 
                             {/* Footer */}
                             <div className="flex items-center justify-between mt-4">
-                                <span className="text-xs text-gray-400 flex items-center gap-1">
+                                <span className="text-xs text-gray-400 dark:text-dark-text-secondary flex items-center gap-1">
                                     <Clock className="h-3 w-3" />
                                     {tip.timeEstimate}
                                 </span>
@@ -149,8 +156,8 @@ export function DailyTips() {
                                 <button
                                     onClick={() => toggleTip(tip.id)}
                                     className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${tip.completed
-                                            ? 'bg-primary-500 text-white'
-                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                            ? 'bg-primary-500 dark:bg-dark-accent-primary text-white'
+                                            : 'bg-gray-100 dark:bg-dark-bg-tertiary text-gray-600 dark:text-dark-text-secondary hover:bg-gray-200 dark:hover:bg-dark-border-secondary'
                                         }`}
                                 >
                                     {tip.completed ? (
@@ -171,11 +178,11 @@ export function DailyTips() {
             {/* Empty State */}
             {filteredTips.length === 0 && (
                 <div className="text-center py-12">
-                    <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <Pencil className="h-8 w-8 text-gray-400" />
+                    <div className="w-16 h-16 mx-auto bg-gray-100 dark:bg-dark-bg-tertiary rounded-full flex items-center justify-center mb-4">
+                        <Pencil className="h-8 w-8 text-gray-400 dark:text-dark-text-secondary" />
                     </div>
-                    <h3 className="text-gray-500 font-medium">No tips found</h3>
-                    <p className="text-gray-400 text-sm mt-1">
+                    <h3 className="text-gray-500 dark:text-dark-text-primary font-medium">No tips found</h3>
+                    <p className="text-gray-400 dark:text-dark-text-secondary text-sm mt-1">
                         {showCompleted
                             ? 'No tips available for this category.'
                             : 'No incomplete tips in this category.'}
@@ -186,7 +193,7 @@ export function DailyTips() {
             {/* Show/Hide Completed Toggle */}
             <button
                 onClick={() => setShowCompleted(!showCompleted)}
-                className="mt-6 text-sm text-gray-500 hover:text-primary-500 transition-colors flex items-center gap-2 mx-auto"
+                className="mt-6 text-sm text-gray-500 dark:text-dark-text-secondary hover:text-primary-500 dark:hover:text-dark-accent-primary transition-colors flex items-center gap-2 mx-auto"
             >
                 {showCompleted ? 'Hide' : 'Show'} completed tips
                 <Check className="h-4 w-4" />

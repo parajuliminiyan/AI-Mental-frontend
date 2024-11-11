@@ -188,12 +188,12 @@ export default function Chat() {
     };
 
     return (
-        <div className="flex flex-col h-full bg-gray-50">
+        <div className="flex flex-col h-full bg-gray-50 dark:bg-dark-bg-primary">
             {/* Error Toast */}
             {error.show && (
-                <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg flex items-center gap-2 ${error.type === 'error' ? 'bg-red-500 text-white' :
-                    error.type === 'warning' ? 'bg-yellow-500 text-white' :
-                        'bg-blue-500 text-white'
+                <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg dark:shadow-dark-lg flex items-center gap-2 ${error.type === 'error' ? 'bg-red-500 dark:bg-red-900 text-white' :
+                    error.type === 'warning' ? 'bg-yellow-500 dark:bg-yellow-900 text-white' :
+                        'bg-blue-500 dark:bg-blue-900 text-white'
                     }`}>
                     <AlertTriangle className="h-5 w-5" />
                     <p className="text-sm">{error.message}</p>
@@ -207,61 +207,63 @@ export default function Chat() {
             )}
 
             {/* Chat Header */}
-            <div className="bg-white border-b px-4 py-3 sticky top-0 z-10">
-                <div className="bg-white border-b px-4 py-3">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                            <div className="bg-primary-100 p-2 rounded-full">
-                                <Bot className="h-6 w-6 text-primary-500" />
-                            </div>
-                            <div>
-                                <h2 className="font-semibold text-gray-800">Mental Health Companion</h2>
-                                <p className="text-xs text-gray-500">
-                                    {userTyping ? 'Typing...' : 'Always here to listen'}
-                                </p>
-                            </div>
+            <div className="bg-white dark:bg-dark-bg-secondary border-b border-gray-200 dark:border-dark-border-primary px-4 py-3 sticky top-0 z-10">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                        <div className="bg-primary-100 dark:bg-dark-accent-primary/20 p-2 rounded-full">
+                            <Bot className="h-6 w-6 text-primary-500 dark:text-dark-accent-primary" />
                         </div>
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={() => {
-                                    setShowSearch(!showSearch);
-                                    if (!showSearch) {
-                                        setTimeout(() => searchInputRef.current?.focus(), 100);
-                                    }
-                                }}
-                                className="p-2 hover:bg-gray-100 rounded-full"
-                            >
-                                <Search className="h-5 w-5 text-gray-500" />
-                            </button>
-                            <button className="p-2 hover:bg-gray-100 rounded-full">
-                                <MoreVertical className="h-5 w-5 text-gray-500" />
-                            </button>
+                        <div>
+                            <h2 className="font-semibold text-gray-800 dark:text-dark-text-primary">
+                                Mental Health Companion
+                            </h2>
+                            <p className="text-xs text-gray-500 dark:text-dark-text-secondary">
+                                {userTyping ? 'Typing...' : 'Always here to listen'}
+                            </p>
                         </div>
                     </div>
-
-                    {/* Search Bar */}
-                    {showSearch && (
-                        <div className="mt-3 relative">
-                            <input
-                                ref={searchInputRef}
-                                type="text"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search messages..."
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary-500"
-                            />
-                            {searchQuery && (
-                                <button
-                                    onClick={() => setSearchQuery('')}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                                >
-                                    <X className="h-4 w-4" />
-                                </button>
-                            )}
-                        </div>
-                    )}
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => {
+                                setShowSearch(!showSearch);
+                                if (!showSearch) {
+                                    setTimeout(() => searchInputRef.current?.focus(), 100);
+                                }
+                            }}
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary rounded-full"
+                        >
+                            <Search className="h-5 w-5 text-gray-500 dark:text-dark-text-secondary" />
+                        </button>
+                        <button className="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary rounded-full">
+                            <MoreVertical className="h-5 w-5 text-gray-500 dark:text-dark-text-secondary" />
+                        </button>
+                    </div>
                 </div>
+
+
+                {/* Search Bar */}
+                {showSearch && (
+                    <div className="mt-3 relative">
+                        <input
+                            ref={searchInputRef}
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Search messages..."
+                            className="w-full px-4 py-2 bg-white dark:bg-dark-bg-tertiary border border-gray-200 dark:border-dark-border-primary rounded-lg focus:outline-none focus:border-primary-500 dark:focus:border-dark-accent-primary dark:text-dark-text-primary dark:placeholder-dark-text-secondary"
+                        />
+                        {searchQuery && (
+                            <button
+                                onClick={() => setSearchQuery('')}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-dark-text-secondary hover:text-gray-600 dark:hover:text-dark-text-primary"
+                            >
+                                <X className="h-4 w-4" />
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
+
 
             {/* Chat Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-6 space-y-6 pb-[180px]">
@@ -273,50 +275,17 @@ export default function Chat() {
                         <div className={`max-w-[80%] ${message.type === 'user' ? 'order-1' : 'order-2'}`}>
                             {/* Message Content */}
                             <div className={`rounded-2xl px-4 py-3 ${message.type === 'user'
-                                ? 'bg-primary-500 text-white'
-                                : 'bg-white border border-gray-200'
+                                ? 'bg-primary-500 dark:bg-dark-accent-primary text-white'
+                                : 'bg-white dark:bg-dark-bg-secondary border border-gray-200 dark:border-dark-border-primary dark:text-dark-text-primary'
                                 }`}>
                                 {message.isLoading ? (
                                     <div className="flex space-x-2 h-6 items-center">
-                                        <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce"
-                                            style={{ animationDelay: '0ms' }}></div>
-                                        <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce"
-                                            style={{ animationDelay: '150ms' }}></div>
-                                        <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce"
-                                            style={{ animationDelay: '300ms' }}></div>
+                                        <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce" style={{ animationDelay: '300ms' }}></div>
                                     </div>
                                 ) : (
                                     <p className="text-sm">{message.content}</p>
-                                )}
-                            </div>
-
-                            {/* Timestamp and Reactions */}
-                            <div className={`mt-1 flex items-center gap-2 ${message.type === 'user' ? 'justify-end' : 'justify-start'
-                                }`}>
-                                <p className="text-xs text-gray-400">
-
-                                </p>
-
-                                {message.reactions && (
-                                    <div className="flex gap-1">
-                                        {message.reactions.map((reaction) => (
-                                            <button
-                                                key={reaction.type}
-                                                onClick={() => handleReaction(message.id, reaction.type)}
-                                                className={`p-1 rounded-full transition-colors ${reaction.userReacted
-                                                    ? 'bg-primary-100 text-primary-500'
-                                                    : 'hover:bg-gray-100 text-gray-400'
-                                                    }`}
-                                            >
-                                                {reaction.type === 'like' && <ThumbsUp className="h-3 w-3" />}
-                                                {reaction.type === 'heart' && <Heart className="h-3 w-3" />}
-                                                {reaction.type === 'dislike' && <ThumbsDown className="h-3 w-3" />}
-                                                {reaction.count > 0 && (
-                                                    <span className="text-xs ml-1">{reaction.count}</span>
-                                                )}
-                                            </button>
-                                        ))}
-                                    </div>
                                 )}
                             </div>
 
@@ -327,7 +296,7 @@ export default function Chat() {
                                         <button
                                             key={index}
                                             onClick={() => handleSuggestionClick(suggestion)}
-                                            className="text-sm bg-white border border-gray-200 rounded-full px-3 py-1.5 text-gray-600 hover:bg-gray-50 transition-colors"
+                                            className="text-sm bg-white dark:bg-dark-bg-tertiary border border-gray-200 dark:border-dark-border-primary rounded-full px-3 py-1.5 text-gray-600 dark:text-dark-text-secondary hover:bg-gray-50 dark:hover:bg-dark-border-secondary transition-colors"
                                         >
                                             {suggestion}
                                         </button>
@@ -341,10 +310,10 @@ export default function Chat() {
             </div>
 
             {/* Chat Input */}
-            <div className="fixed bottom-[64px] left-0 right-0 bg-white border-t p-4">
+            <div className="fixed bottom-[64px] left-0 right-0 bg-white dark:bg-dark-bg-secondary border-t border-gray-200 dark:border-dark-border-primary p-4">
                 <div className="flex items-end space-x-3 max-w-7xl mx-auto">
-                    <button className="p-2 hover:bg-gray-100 rounded-full">
-                        <Smile className="h-6 w-6 text-gray-400" />
+                    <button className="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary rounded-full transition-colors">
+                        <Smile className="h-6 w-6 text-gray-400 dark:text-dark-text-secondary" />
                     </button>
                     <div className="flex-1 relative">
                         <textarea
@@ -360,27 +329,106 @@ export default function Chat() {
                                 }
                             }}
                             placeholder="Type a message..."
-                            className="w-full border rounded-2xl px-4 py-3 focus:outline-none focus:border-primary-500 resize-none text-sm"
+                            className="w-full border dark:border-dark-border-primary rounded-2xl px-4 py-3 
+                                focus:outline-none focus:border-primary-500 dark:focus:border-dark-accent-primary 
+                                resize-none text-sm bg-white dark:bg-dark-bg-tertiary 
+                                text-gray-900 dark:text-dark-text-primary 
+                                placeholder-gray-400 dark:placeholder-dark-text-secondary"
                             style={{ maxHeight: '120px' }}
                             rows={1}
                         />
                         {inputValue.length > 0 && (
                             <button
                                 onClick={handleSend}
-                                className="absolute right-3 bottom-3 p-1 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors"
+                                className="absolute right-3 bottom-3 p-1 bg-primary-500 dark:bg-dark-accent-primary 
+                                    text-white rounded-full hover:bg-primary-600 dark:hover:bg-dark-accent-secondary 
+                                    transition-colors"
                             >
                                 <Send className="h-4 w-4" />
                             </button>
                         )}
                     </div>
-                    <button className="p-2 hover:bg-gray-100 rounded-full">
-                        <ImageIcon className="h-6 w-6 text-gray-400" />
+                    <button className="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary rounded-full transition-colors">
+                        <ImageIcon className="h-6 w-6 text-gray-400 dark:text-dark-text-secondary" />
                     </button>
-                    <button className="p-2 hover:bg-gray-100 rounded-full">
-                        <AlertCircle className="h-6 w-6 text-gray-400" />
+                    <button className="p-2 hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary rounded-full transition-colors">
+                        <AlertCircle className="h-6 w-6 text-gray-400 dark:text-dark-text-secondary" />
                     </button>
                 </div>
             </div>
-        </div>
+            {/* Message Reactions */}
+            {/* <div className="flex gap-1">
+                {messages.reactions && message.reactions.map((reaction) => (
+                    <button
+                        key={reaction.type}
+                        onClick={() => handleReaction(message.id, reaction.type)}
+                        className={`p-1 rounded-full transition-colors ${reaction.userReacted
+                            ? 'bg-primary-100 dark:bg-dark-accent-primary/20 text-primary-500 dark:text-dark-accent-primary'
+                            : 'hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary text-gray-400 dark:text-dark-text-secondary'
+                            }`}
+                    >
+                        {reaction.type === 'like' && <ThumbsUp className="h-3 w-3" />}
+                        {reaction.type === 'heart' && <Heart className="h-3 w-3" />}
+                        {reaction.type === 'dislike' && <ThumbsDown className="h-3 w-3" />}
+                        {reaction.count > 0 && (
+                            <span className="text-xs ml-1">{reaction.count}</span>
+                        )}
+                    </button>
+                ))}
+            </div> */}
+
+            {/* Timestamp */}
+            {/* <p className="text-xs text-gray-400 dark:text-dark-text-secondary mt-1">
+                {message.timestamp.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })}
+            </p> */}
+
+            {/* Loading Messages */}
+            {isTyping && (
+                <div className="flex space-x-2 h-6 items-center">
+                    <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce"
+                        style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce"
+                        style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 animate-bounce"
+                        style={{ animationDelay: '300ms' }}></div>
+                </div>
+            )}
+
+            {/* Error States */}
+            {error.show && (
+                <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg dark:shadow-dark-lg 
+                    flex items-center gap-2 ${error.type === 'error'
+                        ? 'bg-red-500 dark:bg-red-900/90'
+                        : error.type === 'warning'
+                            ? 'bg-yellow-500 dark:bg-yellow-900/90'
+                            : 'bg-blue-500 dark:bg-blue-900/90'
+                    } text-white`}>
+                    <AlertTriangle className="h-5 w-5" />
+                    <p className="text-sm">{error.message}</p>
+                    <button
+                        onClick={() => setError({ show: false, message: '', type: 'error' })}
+                        className="ml-2 hover:opacity-80 transition-opacity"
+                    >
+                        <X className="h-4 w-4" />
+                    </button>
+                </div>
+            )}
+
+            {/* Empty/No Messages State */}
+            {messages.length === 0 && !isTyping && (
+                <div className="flex flex-col items-center justify-center h-full text-center p-6">
+                    <MessageCircle className="h-12 w-12 text-gray-400 dark:text-dark-text-secondary mb-4" />
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text-primary">
+                        Start a Conversation
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-dark-text-secondary mt-2">
+                        Send a message to begin chatting with your AI companion
+                    </p>
+                </div>
+            )}
+        </div >
     );
 }

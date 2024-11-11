@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --background: #ffffff;
+        --foreground: #000000;
+
+        /* Light mode custom colors */
+        --primary-bg: #ffffff;
+        --secondary-bg: #f9fafb;
+        --primary-text: #111827;
+        --secondary-text: #4b5563;
+        --border-color: #e5e7eb;
+    }
+
+    .dark {
+        --background: #121212;
+        --foreground: #ffffff;
+
+        /* Dark mode custom colors */
+        --primary-bg: #121212;
+        --secondary-bg: #1e1e1e;
+        --primary-text: #ffffff;
+        --secondary-text: #a3a3a3;
+        --border-color: #2d2d2d;
+    }
+}
+
+/* Optional: Add smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Custom utility classes for dark mode */
+@layer utilities {
+    .dark-hover {
+        @apply hover:bg-dark-bg-secondary dark:hover:bg-dark-bg-tertiary;
+    }
+
+    .dark-border {
+        @apply border-gray-200 dark:border-dark-border-primary;
+    }
+
+    .dark-text {
+        @apply text-gray-900 dark:text-dark-text-primary;
+    }
+
+    .dark-text-secondary {
+        @apply text-gray-600 dark:text-dark-text-secondary;
+    }
+}
+
+@layer base {
+    body {
+        transition: background-color 0.3s ease;
+    }
+}
