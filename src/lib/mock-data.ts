@@ -1,5 +1,5 @@
-import { Resource } from '@/types';
-import { Tip } from '@/types';
+import { Resource } from '@/app/types';
+import { Tip } from '@/app/types';
 
 export const mockResources: Resource[] = [
     {
@@ -132,3 +132,5 @@ export const mockTips: Tip[] = [
         timeEstimate: '4 mins'
     }
 ];
+
+export type { Tip };

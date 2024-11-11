@@ -13,21 +13,16 @@ import {
     Trophy
 } from 'lucide-react';
 import { mockTips } from '@/lib/mock-data';
+import { Tip } from '@/app/types';
 
-interface Tip {
-    id: string;
-    content: string;
-    completed: boolean;
-    category: string;
-    timeEstimate: string;
-}
 
 export function DailyTips() {
+    // Use the corrected mockTips
     const [tips, setTips] = useState<Tip[]>(mockTips);
     const [activeFilter, setActiveFilter] = useState<string>('all');
     const [showCompleted, setShowCompleted] = useState(true);
 
-    const getCategoryIcon = (category: string) => {
+    const getCategoryIcon = (category: string = '') => {
         switch (category.toLowerCase()) {
             case 'mindfulness':
                 return <Wind className="h-4 w-4" />;
@@ -110,13 +105,13 @@ export function DailyTips() {
                 {categories.map(category => (
                     <button
                         key={category}
-                        onClick={() => setActiveFilter(category)}
+                        onClick={() => setActiveFilter(category || 'all')}
                         className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
               ${activeFilter === category
                                 ? 'bg-primary-500 text-white'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                     >
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                        {(category || 'all').charAt(0).toUpperCase() + (category || 'all').slice(1)}
                     </button>
                 ))}
             </div>
@@ -133,7 +128,7 @@ export function DailyTips() {
                     >
                         <div className="p-4">
                             {/* Category Badge */}
-                            <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs mb-3 ${getCategoryColor(tip.category)}`}>
+                            <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs mb-3 ${getCategoryColor(tip.category || '')}`}>
                                 {getCategoryIcon(tip.category)}
                                 {tip.category}
                             </div>

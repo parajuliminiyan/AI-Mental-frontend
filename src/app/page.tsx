@@ -6,7 +6,7 @@ import { DailyTips } from '@/components/ui/daily-tips';
 import { ResourceCenter } from '@/components/ui/resource-center';
 import { Navigation } from '@/components/ui/navigation';
 import { useState, useEffect } from 'react';
-import type { UserProfile } from '@/types';
+import type { UserProfile } from '@/app/types';
 
 export default function Home() {
     const [user, setUser] = useState<UserProfile | null>(null);

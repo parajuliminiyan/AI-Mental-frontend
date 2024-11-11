@@ -11,12 +11,14 @@ import {
 } from 'lucide-react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { User as UserType, MoodOption } from '@/app/types';
+import { UserProfile, MoodOption } from '@/app/types';
 
 // Mock API functions - replace with actual API calls later
 const mockApi = {
-    getUserProfile: async (): Promise<UserType> => ({
+    getUserProfile: async (): Promise<UserProfile> => ({
+        id: '1',
         name: 'John',
+        email: 'john@example.com',
         lastLogin: new Date(),
     }),
     getMoodSuggestions: async (): Promise<MoodOption[]> => ([
@@ -41,7 +43,7 @@ const mockApi = {
 const Home: NextPage = () => {
     const [currentMood, setCurrentMood] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'home' | 'chat' | 'profile'>('home');
-    const [user, setUser] = useState<UserType | null>(null);
+    const [user, setUser] = useState<UserProfile | null>(null);
     const [moodOptions, setMoodOptions] = useState<MoodOption[]>([]);
     const [dailyTips, setDailyTips] = useState<string[]>([]);
     const [resourceCategories, setResourceCategories] = useState<string[]>([]);

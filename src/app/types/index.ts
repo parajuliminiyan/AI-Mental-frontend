@@ -14,6 +14,8 @@ export interface Tip {
     id: string;
     content: string;
     completed: boolean;
+    category?: string;
+    timeEstimate?: string;
 }
 
 export interface Resource {
@@ -23,6 +25,7 @@ export interface Resource {
     category: string;
     link: string;
 }
+
 export interface ChatMessage {
     id: string;
     content: string;
@@ -33,3 +36,22 @@ export interface ChatMessage {
 }
 
 export type TabType = 'home' | 'chat' | 'profile';
+
+// Add more specific types for components
+export interface UserStats {
+    checkIns: number;
+    streakDays: number;
+    journalEntries: number;
+    resourcesAccessed: number;
+}
+
+export interface MenuItem {
+    icon: any; // or use a more specific type for your icons
+    label: string;
+    path: string;
+}
+
+export interface MenuSection {
+    title: string;
+    items: MenuItem[];
+}

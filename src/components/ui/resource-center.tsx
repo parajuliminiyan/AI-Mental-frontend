@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { BookOpen, ArrowRight, ExternalLink, Clock, BookMarked } from 'lucide-react';
-import { Resource } from '@/types';
+import { Resource } from '@/app/types';
 import { mockResources } from '@/lib/mock-data';
 
 export function ResourceCenter() {
@@ -60,8 +60,8 @@ export function ResourceCenter() {
                         key={category}
                         onClick={() => setActiveCategory(category)}
                         className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${activeCategory === category
-                                ? 'bg-primary-500 text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            ? 'bg-primary-500 text-white'
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                             }`}
                     >
                         {category.charAt(0).toUpperCase() + category.slice(1)}
