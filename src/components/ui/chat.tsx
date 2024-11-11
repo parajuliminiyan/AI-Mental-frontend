@@ -215,7 +215,7 @@ export default function Chat() {
                         </div>
                         <div>
                             <h2 className="font-semibold text-gray-800 dark:text-dark-text-primary">
-                                Mental Health Companion
+                                MindWise - Mental Health Companion
                             </h2>
                             <p className="text-xs text-gray-500 dark:text-dark-text-secondary">
                                 {userTyping ? 'Typing...' : 'Always here to listen'}

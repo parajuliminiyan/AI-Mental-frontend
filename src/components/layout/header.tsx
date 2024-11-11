@@ -12,7 +12,7 @@ export function Header() {
                 <div className="flex items-center">
                     <Menu className="h-6 w-6 text-gray-500 dark:text-[#A0A0A0] hover:text-gray-700 dark:hover:text-white transition-colors" />
                     <h1 className="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
-                        Mental Health Companion
+                        MindWise
                     </h1>
                 </div>
 

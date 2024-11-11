@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/contexts/theme-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Mental Health Companion",
+    title: "MindWise",
     description: "AI-powered mental health support",
 };
 

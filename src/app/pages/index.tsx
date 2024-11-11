@@ -92,7 +92,7 @@ const Home: NextPage = () => {
                     <div className="flex items-center">
                         <Menu className="h-6 w-6 text-gray-500 dark:text-dark-text-secondary" />
                         <h1 className="ml-4 text-xl font-semibold text-gray-900 dark:text-dark-text-primary">
-                            Mental Health Companion
+                            MindWise
                         </h1>
                     </div>
                     <button className="p-2 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
