@@ -7,7 +7,6 @@ import { ResourceCenter } from '@/components/ui/resource-center';
 import { Navigation } from '@/components/ui/navigation';
 import { useState, useEffect } from 'react';
 import type { UserProfile } from '@/app/types';
-import { useAuth } from '@/contexts/auth-context';
 
 export default function Home() {
     const [user, setUser] = useState<UserProfile | null>(null);

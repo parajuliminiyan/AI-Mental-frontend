@@ -55,7 +55,7 @@ export function PWAPrompt() {
                 Install App
             </h3>
             <p className="text-gray-600 dark:text-dark-text-secondary mb-4">
-                Install Mental Health Companion for easier access and offline support.
+                Install MindWise App for easier access and offline support.
             </p>
             <div className="flex justify-end gap-3">
                 <button

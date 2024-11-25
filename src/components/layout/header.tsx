@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useTheme } from '@/contexts/theme-context';
 import { useAuth } from '@/contexts/auth-context';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export function Header() {
     const { isDarkMode, toggleDarkMode } = useTheme();
@@ -17,7 +18,7 @@ export function Header() {
                 <div className="flex items-center">
                     <Menu className="h-6 w-6 text-gray-500 dark:text-[#A0A0A0] hover:text-gray-700 dark:hover:text-white transition-colors" />
                     <h1 className="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
-                        Mental Health Companion
+                        MindWise - Mental Health Companion
                     </h1>
                 </div>
 
@@ -91,13 +92,14 @@ export function Header() {
                     )}
 
                     {/* Emergency Button */}
-                    <button
-                        className="p-2 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 
-                            hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
-                        onClick={() => window.location.href = '/emergency'}
+                    <Link
+                        href="/emergency"
+                        className="p-2 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400
+                            hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors inline-flex items-center justify-center"
+                        aria-label="Emergency Support"
                     >
                         <AlertTriangle className="h-5 w-5" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </header>
