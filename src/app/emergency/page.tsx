@@ -27,7 +27,7 @@ export default function Emergency() {
 
     const mentalHealthResources = [
         {
-            name: "SAMHSA's National Helpline",
+            name: "SAMHSA&apos;s National Helpline",
             contact: "1-800-662-4357",
             description: "Treatment referral and information service",
             website: "https://www.samhsa.gov/find-help/national-helpline"
@@ -56,7 +56,7 @@ export default function Emergency() {
                         <h1 className="text-2xl font-bold">Emergency Support</h1>
                     </div>
                     <p className="text-red-100">
-                        If you're experiencing a medical emergency or immediate crisis,
+                        If you&apos;re experiencing a medical emergency or immediate crisis,
                         please call emergency services immediately.
                     </p>
                 </div>
@@ -74,8 +74,8 @@ export default function Emergency() {
                             <div
                                 key={contact.name}
                                 className={`p-4 rounded-lg border ${contact.priority === 'high'
-                                        ? 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800'
-                                        : 'bg-white dark:bg-dark-bg-secondary border-gray-200 dark:border-dark-border-primary'
+                                    ? 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800'
+                                    : 'bg-white dark:bg-dark-bg-secondary border-gray-200 dark:border-dark-border-primary'
                                     }`}
                             >
                                 <div className="flex justify-between items-start">
@@ -90,8 +90,8 @@ export default function Emergency() {
                                     <a
                                         href={`tel:${contact.number}`}
                                         className={`px-4 py-2 rounded-lg text-white ${contact.priority === 'high'
-                                                ? 'bg-red-500 hover:bg-red-600'
-                                                : 'bg-primary-500 hover:bg-primary-600'
+                                            ? 'bg-red-500 hover:bg-red-600'
+                                            : 'bg-primary-500 hover:bg-primary-600'
                                             } transition-colors`}
                                     >
                                         Call {contact.number}
@@ -151,7 +151,7 @@ export default function Emergency() {
                 {/* Disclaimer */}
                 <div className="mt-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                     <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                        This information is provided for emergency situations. If you're experiencing
+                        This information is provided for emergency situations. If you&apos;re experiencing
                         a medical emergency, immediately call your local emergency services or go to
                         the nearest emergency room.
                     </p>
