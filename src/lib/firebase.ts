@@ -12,14 +12,14 @@ const firebaseConfig = {
 
 
 // Debug configuration
-console.log('Firebase Config:', {
-    apiKey: firebaseConfig.apiKey ? 'present' : 'missing',
-    authDomain: firebaseConfig.authDomain ? 'present' : 'missing',
-    projectId: firebaseConfig.projectId ? 'present' : 'missing',
-    storageBucket: firebaseConfig.storageBucket ? 'present' : 'missing',
-    messagingSenderId: firebaseConfig.messagingSenderId ? 'present' : 'missing',
-    appId: firebaseConfig.appId ? 'present' : 'missing'
-});
+// console.log('Firebase Config:', {
+//     apiKey: firebaseConfig.apiKey ? 'present' : 'missing',
+//     authDomain: firebaseConfig.authDomain ? 'present' : 'missing',
+//     projectId: firebaseConfig.projectId ? 'present' : 'missing',
+//     storageBucket: firebaseConfig.storageBucket ? 'present' : 'missing',
+//     messagingSenderId: firebaseConfig.messagingSenderId ? 'present' : 'missing',
+//     appId: firebaseConfig.appId ? 'present' : 'missing'
+// });
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 console.log(app);
