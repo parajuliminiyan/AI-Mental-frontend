@@ -27,7 +27,7 @@ export default function Emergency() {
 
     const mentalHealthResources = [
         {
-            name: "SAMHSA&apos;s National Helpline",
+            name: "SAMHSA's National Helpline",
             contact: "1-800-662-4357",
             description: "Treatment referral and information service",
             website: "https://www.samhsa.gov/find-help/national-helpline"
