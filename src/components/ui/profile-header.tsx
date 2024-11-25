@@ -1,4 +1,5 @@
 import { UserCircle } from 'lucide-react';
+import Image from 'next/image';
 
 interface UserProfileProps {
     profile: {
@@ -23,7 +24,7 @@ export function UserHeader({ profile }: UserProfileProps) {
                 <div className="flex items-center gap-4">
                     <div className="relative w-20 h-20">
                         {profile.avatar ? (
-                            <img
+                            <Image
                                 src={profile.avatar}
                                 alt={profile.name}
                                 className="w-full h-full rounded-full object-cover"

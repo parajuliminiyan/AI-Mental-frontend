@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu, AlertTriangle, Moon, Sun, LogIn, LogOut, User } from 'lucide-react';
+import Image from 'next/image';
 import { useTheme } from '@/contexts/theme-context';
 import { useAuth } from '@/contexts/auth-context';
 import { useState } from 'react';
@@ -44,7 +45,7 @@ export function Header() {
                                     dark:hover:bg-[#2D2D2D] transition-colors"
                             >
                                 {user.photoURL ? (
-                                    <img
+                                    <Image
                                         src={user.photoURL}
                                         alt={user.displayName || 'User'}
                                         className="w-8 h-8 rounded-full"
